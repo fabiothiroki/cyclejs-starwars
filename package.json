@@ -1,0 +1,26 @@
+{
+  "name": "my-awesome-app",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "cycle-scripts": "1.1.0"
+  },
+  "dependencies": {
+    "@cycle/dom": "17.1.0",
+    "@cycle/http": "13.2.0",
+    "@cycle/run": "3.1.0",
+    "@cycle/rxjs-run": "7.0.0",
+    "rxjs": "5.3.0"
+  },
+  "scripts": {
+    "start": "cycle-scripts start",
+    "test": "cycle-scripts test",
+    "build": "cycle-scripts build",
+    "eject": "cycle-scripts eject"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
