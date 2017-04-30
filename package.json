@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "cycle-scripts": "1.1.0"
+    "chai": "3.5.0",
+    "chai-virtual-dom": "1.0.0",
+    "cycle-scripts": "1.1.0",
+    "virtual-dom": "2.1.1"
   },
   "dependencies": {
     "@cycle/dom": "17.1.0",

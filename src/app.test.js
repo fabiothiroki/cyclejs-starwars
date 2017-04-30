@@ -1,32 +1,23 @@
 import assert from 'assert';
-import {run} from '@cycle/run';
-// import createRenderTarget from './helper/createRenderTarget';
-import {App} from './app'
-import {makeDOMDriver} from '@cycle/dom';
-import {makeHTTPDriver} from '@cycle/http';
-import Rx from 'rxjs';
+import {view} from './view';
+import { Observable } from 'rxjs';
+var chai = require('chai');
+var expect = chai.expect;
+chai.use(require('chai-virtual-dom'));
+var h = require('virtual-dom').h;
 
-describe('App', function () {
-  it('should test something', function () {
 
-    function app(sources) {
-    return {
-      DOM: Rx.Observable.just(
-        h3('.top-most', [
-          sources.DOM.isolateSink(Rx.Observable.just(
-            div('.foo', [
-              h4('.bar', 'Wrong')
-            ])
-          ), 'ISOLATION'),
-          h2('.bar', 'Correct'),
-        ])
-      )
-    };
-  }
+describe('View tests', function () {
+  it('Should not be null', function () {
 
-  // let {sinks, sources} = run(app, {
-  //   DOM: makeDOMDriver(createRenderTarget())
-  // });
+    const state$ = Observable.of({
+      characters: [{name: 'Loading...'}],
+      searchTerm: ''
+    });
+
+    const view$ = view(state$);
+
+    expect(view$).to.not.be.null;
 
   })
 })
