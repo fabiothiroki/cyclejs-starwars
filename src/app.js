@@ -1,4 +1,4 @@
-import {div, p, input, h1, h2, tr, td, tbody, thead, th, table, h4} from '@cycle/dom'
+import {div, p, input, h1, h2, tr, td, tbody, thead, th, table, h4, h5} from '@cycle/dom'
 import { Observable } from 'rxjs'
 
 export function App (sources) {
@@ -58,7 +58,7 @@ function view(state$) {
       ]),
       div('.card-content .table-responsive',[
         table('.table', [
-          thead(tr(th('Name'))),
+          thead(tr(th(h5('Name')))),
           tbody(list)
         ])
       ])
