@@ -51,7 +51,7 @@ function view(state$) {
       return tr(td(character.name));
     });
 
-    return div('.card', [
+    return div(".card", [
       div('.card-header', [
         h4('.title', 'Star Wars Character Search'),
         input('#search.form-control', {props: {type: "text", placeholder: "Type to search"}})
