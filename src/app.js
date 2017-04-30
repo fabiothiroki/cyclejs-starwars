@@ -1,4 +1,4 @@
-import {div, p, input, h1, h2} from '@cycle/dom'
+import {div, p, input, h1, h2, tr, td, tbody, thead, th, table, h4, h5} from '@cycle/dom'
 import { Observable } from 'rxjs'
 
 export function App (sources) {
@@ -6,7 +6,7 @@ export function App (sources) {
   const intents$ = {
     apiResponse: sources.HTTP.select('api').flatten(),
 
-    changeSearchTerm: sources.DOM.select('#search')
+    changeSearchTerm: sources.DOM.select('#search.form-control')
       .events("input")
       .map(ev => ev.target.value)
       .startWith('')
@@ -34,30 +34,36 @@ function state(intents$){
 
       return {
         characters: response.body.results,
-
         searchTerm: searchTerm
       };
     })
     .startWith({
-      characters: [{name: 'Loading'}],
-
+      characters: [{name: 'Loading...'}],
       searchTerm: ''
     })
 }
 
 
-function view(state$) {  
+function view(state$) {
   return state$.map((state) => {
 
     const list = state.characters.map( character => {
-      return p(character.name);
+      return tr(td(character.name));
     });
 
-    return div([
-      input("#search", {type: "text", value: state.searchTerm, autocomplete: "off"}),
-      h2("Showing search results for: " + state.searchTerm),
-      div(list)
-   ]);
+    return div(".card", [
+      div('.card-header', [
+        h4('.title', 'Star Wars Character Search'),
+        input('#search.form-control', {props: {type: "text", placeholder: "Type to search"}})
+      ]),
+      div('.card-content .table-responsive',[
+        table('.table', [
+          thead(tr(th(h5('Name')))),
+          tbody(list)
+        ])
+      ])
+    ]);
 
-  });  
+
+  });
 }
