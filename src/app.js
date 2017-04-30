@@ -1,4 +1,4 @@
-import {div, p, input, h1, h2} from '@cycle/dom'
+import {div, p, input, h1, h2, tr, td, tbody, thead, th, table} from '@cycle/dom'
 import { Observable } from 'rxjs'
 
 export function App (sources) {
@@ -46,18 +46,17 @@ function state(intents$){
 }
 
 
-function view(state$) {  
+function view(state$) {
   return state$.map((state) => {
 
     const list = state.characters.map( character => {
-      return p(character.name);
+      return tr(td(character.name));
     });
 
-    return div([
-      input("#search", {type: "text", value: state.searchTerm, autocomplete: "off"}),
-      h2("Showing search results for: " + state.searchTerm),
-      div(list)
-   ]);
+    return table('.table', [
+      thead(tr(th('Name'))),
+      tbody(list)
+    ]);
 
-  });  
+  });
 }
