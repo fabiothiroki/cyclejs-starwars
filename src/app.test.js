@@ -40,9 +40,40 @@ describe('View tests', function () {
 
   });
 
+  it('Should populate character data', function () {
+
+    const state$ = getInitialState();
+    const view$ = view(state$);
+
+    const expected$ = div(".card", [
+      div('.card-header', [
+        h4('.title', 'Star Wars Character Search'),
+        input('#search.form-control', {props: {type: "text", placeholder: "Type to search"}})
+      ]),
+      div('.card-content .table-responsive',[
+        table('.table', [
+          thead(tr(th(h5('Name')))),
+          tbody(tr(td('Loading...')))
+        ])
+      ])
+    ]);
+
+    assert.deepEqual(view$. expected$);
+
+  });
+
 })
 
 function getInitialState() {
+  const state$ = Observable.of({
+      characters: [{name: 'Loading...'}],
+      searchTerm: ''
+  });
+
+  return state$;
+}
+
+function getValidState() {
   const state$ = Observable.of({
       characters: [{name: 'Loading...'}],
       searchTerm: ''

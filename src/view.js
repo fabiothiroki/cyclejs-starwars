@@ -1,3 +1,5 @@
+import {div, p, input, h1, h2, tr, td, tbody, thead, th, table, h4, h5} from '@cycle/dom'
+
 
 export function view(state$) {
   return state$.map((state) => {
