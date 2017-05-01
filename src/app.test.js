@@ -3,7 +3,6 @@ import assert from 'assert';
 import {view} from './view';
 import { Observable } from 'rxjs';
 var chai = require('chai');
-var expect = chai.expect;
 chai.use(require('chai-virtual-dom'));
 var h = require('virtual-dom').h;
 
@@ -15,7 +14,7 @@ describe('View tests', function () {
     const state$ = getInitialState();
     const view$ = view(state$);
 
-    expect(view$).to.not.be.null;
+    assert.notEqual(view$, null);
 
   });
 
@@ -24,7 +23,20 @@ describe('View tests', function () {
     const state$ = getInitialState();
     const view$ = view(state$);
 
-    expect(view$).to.equal(view$);
+    const expected$ = div(".card", [
+      div('.card-header', [
+        h4('.title', 'Star Wars Character Search'),
+        input('#search.form-control', {props: {type: "text", placeholder: "Type to search"}})
+      ]),
+      div('.card-content .table-responsive',[
+        table('.table', [
+          thead(tr(th(h5('Name')))),
+          tbody(tr(td('Loading...')))
+        ])
+      ])
+    ]);
+
+    assert.deepEqual(view$. expected$);
 
   });
 
