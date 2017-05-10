@@ -5,7 +5,7 @@ import {view} from './view';
 export function App (sources) {
 
   const intents$ = {
-    apiResponse: sources.HTTP.select('api').flatten(),
+    receiveCharacterList: sources.HTTP.select('api').flatten(),
 
     changeSearchTerm: sources.DOM.select('#search.form-control')
       .events("input")
@@ -28,7 +28,7 @@ export function App (sources) {
 
 function state(intents$){
 
-  return Observable.combineLatest(intents$.apiResponse, intents$.changeSearchTerm)
+  return Observable.combineLatest(intents$.receiveCharacterList, intents$.changeSearchTerm)
     .map((combined) => {
 
       const [response, searchTerm] = combined
