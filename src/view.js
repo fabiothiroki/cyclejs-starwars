@@ -11,7 +11,7 @@ export function view(state$) {
     return div(".card", [
       div('.card-header', [
         h4('.title', 'Star Wars Character Search'),
-        input('#search.form-control', {props: {type: "text", placeholder: "Type to search"}})
+        input('#search.form-control', {props: {type: "text", placeholder: "Type to search", value: state.searchTerm}})
       ]),
       div('.card-content .table-responsive',[
         table('.table', [
