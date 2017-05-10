@@ -13,3 +13,6 @@ The tests included are Virtual DOM tests that uses the [chai-virtual-dom](https:
 
 1. Install all dependencies using `npm install`
 2. `npm test`
+
+# Links
+This repository is part of the [Awesome Cycle.js](https://github.com/cyclejs-community/awesome-cyclejs) list.
