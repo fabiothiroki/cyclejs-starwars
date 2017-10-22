@@ -1,4 +1,7 @@
 # Star Wars Character Search
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/fabiothiroki/cyclejs-starwars/blob/master/LICENSE)
+
 A [Cycle.js](https://github.com/staltz/cycle) app that uses RxJs and the [Star Wars API](https://swapi.co/) to provide a character text-based search. It follows the [Model-View-Intent (MVI) pattern](https://cycle.js.org/model-view-intent.html).
 
 ![test](https://cloud.githubusercontent.com/assets/670057/25587361/1497dbd2-2e7a-11e7-96f3-6a9a8a91bec9.gif)
